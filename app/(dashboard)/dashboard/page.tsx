@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/server'
+import { redirect } from 'next/navigation'
 import Link from 'next/link'
 
 // Cards de métricas com dados reais do Supabase
@@ -58,10 +59,19 @@ export default async function DashboardPage() {
     .eq('owner_id', user!.id)
     .single()
 
-  // Se não tem restaurante cadastrado ainda, mostrar onboarding
+  // Se não tem restaurante → onboarding
   if (!restaurante) {
     return <OnboardingVazio email={user!.email!} />
   }
+
+  // Se não tem brand_context → redirecionar para onboarding completo
+  const { data: brand } = await supabase
+    .from('brand_contexts')
+    .select('id')
+    .eq('restaurant_id', restaurante.id)
+    .maybeSingle()
+
+  if (!brand) redirect('/onboarding')
 
   const metricas = await buscarMetricas(restaurante.id)
 

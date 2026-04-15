@@ -1,0 +1,33 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  # ─── 1. Vercel — deploy automático do app ──────────────────────────────────
+  # (A Vercel já detecta o push no GitHub automaticamente)
+  # Esse job é só para registrar no histórico do GitHub Actions
+
+  # ─── 2. Supabase — aplica migrations do banco ─────────────────────────────
+  migrate:
+    name: Aplicar Migrations no Banco
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Instalar Supabase CLI
+        uses: supabase/setup-cli@v1
+        with:
+          version: latest
+
+      - name: Aplicar migrations
+        run: |
+          supabase db push \
+            --project-ref ${{ secrets.SUPABASE_PROJECT_REF }} \
+            --password ${{ secrets.SUPABASE_DB_PASSWORD }}
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}

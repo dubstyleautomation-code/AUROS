@@ -1,0 +1,47 @@
+# ─── Dependências ─────────────────────────────────────────────────────────────
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# ─── Next.js ─────────────────────────────────────────────────────────────────
+/.next/
+/out/
+/build
+
+# ─── Variáveis de ambiente — NUNCA commitar! ──────────────────────────────────
+.env
+.env.*
+!.env.example
+
+# ─── Supabase ─────────────────────────────────────────────────────────────────
+/supabase/.branches
+/supabase/.temp
+/supabase/seed.sql
+
+# ─── Vercel ───────────────────────────────────────────────────────────────────
+.vercel
+
+# ─── TypeScript ───────────────────────────────────────────────────────────────
+*.tsbuildinfo
+next-env.d.ts
+
+# ─── Testes ───────────────────────────────────────────────────────────────────
+/coverage
+
+# ─── OS / Editor ──────────────────────────────────────────────────────────────
+.DS_Store
+*.pem
+Thumbs.db
+.idea/
+.vscode/settings.json
+
+# ─── Logs ─────────────────────────────────────────────────────────────────────
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*

@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Paleta AUROS */
+  --color-auros-bg:        #09090b;
+  --color-auros-card:      #18181b;
+  --color-auros-border:    #27272a;
+  --color-auros-muted:     #3f3f46;
+  --color-auros-gold:      #d4a853;
+  --color-auros-gold-light:#e8c47a;
+  --color-auros-text:      #fafafa;
+  --color-auros-subtle:    #a1a1aa;
+}
+
+:root {
+  --background: #09090b;
+  --foreground: #fafafa;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar discreta */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 2px; }
